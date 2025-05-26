@@ -1,0 +1,16 @@
+{
+  "name": "playwright-route-api-issue",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "",
+  "scripts": {
+    "start": "node test/server.js",
+    "test": "test"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}

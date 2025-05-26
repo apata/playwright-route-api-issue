@@ -1,39 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>page alfa</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>page alfa</title>
-</head>
+  <body>
+    <h1>page alfa</h1>
+    <form
+      action="/static/page-beta.html"
+      method="get"
+      onsubmit="recordFormSubmit()"
+    >
+      <input type="text" name="text" placeholder="Type something" />
+      <input type="submit" value="Go to page beta" />
+    </form>
+    <script>
+      function getTrackEndpoint() {
+        return new URLSearchParams(window.location.search).get("trackEndpoint");
+      }
 
-<body>
-  <h1>page alfa</h1>
-  <form action="/static/page-beta.html" method="get" onsubmit="recordFormSubmit()">
-    <input type="text" name="text" placeholder="Type something" />
-    <input type="submit" value="Go to page beta" />
-  </form>
-  <script>
-    function getTrackEndpoint() {
-      return new URLSearchParams(window.location.search).get('trackEndpoint') 
-    }
-
-    function recordFormSubmit() {
-      fetch(getTrackEndpoint(), {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        keepalive: true,
-        body: JSON.stringify({
-          page: 'page-alfa',
-          action: 'submit',
-          timestamp: new Date().toISOString()
-        })
-      });
-    }
-  </script>
-</body>
-
+      function recordFormSubmit() {
+        fetch(getTrackEndpoint(), {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          keepalive: true,
+          body: JSON.stringify({
+            page: "page-alfa",
+            action: "submit",
+            timestamp: new Date().toISOString(),
+          }),
+        }).catch((error) =>
+          console.error("Error recording form submit:", error)
+        );
+      }
+    </script>
+  </body>
 </html>

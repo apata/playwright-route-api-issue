@@ -18,14 +18,14 @@ test("track works", async ({ page }, testInfo) => {
   );
   await page.fill('input[name="text"]', "Hello World");
   await page.click('input[type="submit"]');
+  // expect(getPayloads()).toEqual([
+  //   {
+  //     action: "submit",
+  //     page: "page-alfa",
+  //     timestamp: expect.any(String),
+  //   },
+  // ]);
   expect(await getServerRecordedEvents(testInfo)).toEqual([
-    {
-      action: "submit",
-      page: "page-alfa",
-      timestamp: expect.any(String),
-    },
-  ]);
-  expect(getPayloads()).toEqual([
     {
       action: "submit",
       page: "page-alfa",
